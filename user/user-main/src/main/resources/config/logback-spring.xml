@@ -21,12 +21,38 @@
             <appender-ref ref="CONSOLE"/>
             <appender-ref ref="MAIN"/>
         </logger>
+
+        <logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="HIBERNATE_QUERIES"/>
+        </logger>
+        <logger name="org.hibernate.orm.jdbc.bind" level="TRACE" additivity="false">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="HIBERNATE_QUERIES"/>
+        </logger>
     </springProfile>
 
     <springProfile name="test">
         <logger name="ir.co.holoo.user" level="TRACE" additivity="false">
             <appender-ref ref="CONSOLE"/>
             <appender-ref ref="MAIN"/>
+        </logger>
+
+        <logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="HIBERNATE_QUERIES"/>
+        </logger>
+        <logger name="org.hibernate.orm.jdbc.bind" level="TRACE" additivity="false">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="HIBERNATE_QUERIES"/>
+        </logger>
+        <logger name="org.hibernate.SQL_SLOW" level="INFO" additivity="false">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="HIBERNATE_QUERIES"/>
+        </logger>
+        <logger name="org.hibernate.stat" level="OFF" additivity="false">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="HIBERNATE_QUERIES"/>
         </logger>
     </springProfile>
 
@@ -58,6 +84,21 @@
             </fileNamePattern>
             <maxFileSize>1024MB</maxFileSize>
             <maxHistory>180</maxHistory>
+            <totalSizeCap>10GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="HIBERNATE_QUERIES" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${TODAY_PATH_PATTERN}/application/${SERVICE_NAME}/hibernate/hibernate-queries.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>
+                ${ARCHIVE_PATH_PATTERN}/application/${SERVICE_NAME}/hibernate/hibernate-queries.log-%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+            <maxFileSize>1024MB</maxFileSize>
+            <maxHistory>7</maxHistory>
             <totalSizeCap>10GB</totalSizeCap>
         </rollingPolicy>
         <encoder>

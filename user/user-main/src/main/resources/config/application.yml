@@ -67,6 +67,16 @@ spring:
       fail_on_unknown_properties: false
       read_unknown_enum_values_as_null: true
       read_date_timestamps_as_nanoseconds: false
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      pool-name: user-service-connection
+  jpa:
+    database: mysql
+    open-in-view: false
+    show-sql: false
+    database-platform: ir.co.holoo.commons.data.hibernate.dialect.MySQL80Dialect
 
 #Custome application configuration
 
