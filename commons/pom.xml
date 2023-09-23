@@ -41,6 +41,12 @@
             <optional>true</optional>
             <scope>compile</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
     <build>
