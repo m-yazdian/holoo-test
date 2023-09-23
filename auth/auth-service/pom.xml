@@ -33,6 +33,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>ir.co.holoo.auth</groupId>
             <artifactId>auth-dto</artifactId>
             <version>${project.version}</version>
